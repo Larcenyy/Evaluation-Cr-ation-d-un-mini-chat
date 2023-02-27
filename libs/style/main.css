@@ -1,0 +1,174 @@
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+nav{
+    background: lightgray;
+    padding: 1rem;
+}
+nav ul{
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    justify-content: center;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    background: #2f2f2f;
+    padding: 0.4rem;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.2s;
+}
+nav ul li a:hover{
+    opacity: 1;
+}
+
+.container{
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    height: 80vh;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.content{
+    position: relative;
+    padding: 1rem;
+    width: 80%;
+    display: flex;
+    color: lightgray;
+    background: #2f2f2f;
+    border-radius: 4px;
+    height: 100%;
+    flex-direction: row;
+}
+.content-footer{
+    width: 100%;
+    background: #575757a8;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.5rem;
+}
+form{
+    display: flex;
+    gap: 1rem;
+}
+input{
+    padding: 0.6rem;
+    background: #2f2f2f;
+    border-radius: 3px;
+    color: lightgray;
+    border: none;
+}
+#message{
+    width: 70%;
+}
+#submit{
+    width: 30%;
+    cursor: pointer;
+}
+.chat-content{
+    display: flex;
+    gap: 1.3rem;
+    justify-content: flex-end;
+}
+hr{
+    height: 80%;
+}
+
+#loginBox{
+    background: rgba(40, 40, 40, 0.96);
+    position: fixed;
+    width: 100%;
+    /* left: 50vh; */
+    height: 100vh;
+    z-index: 99;
+    justify-content: center;
+    display: none;
+    align-items: center;
+    align-content: space-around;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    color: lightgray;
+}
+.login a{
+    text-decoration: underline;
+    color: lightgray;
+}
+.login div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+#closeLogin{
+    cursor: pointer;
+    transition: 0.2s;
+    background: white;
+    border-radius: 50%;
+    padding: 1rem;
+    font-size: 15px;
+    color: #2f2f2f;
+}
+#closeLogin:hover{
+    opacity: 0.8;
+}
+.chat-right{
+    display: flex;
+    gap: 0.2rem;
+}
+.chat-left{
+    width: 100%;
+    padding: 1rem;
+}
+.chat-content {
+    display: flex;
+    gap: 1.3rem;
+    width: 100%;
+    overflow: scroll;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+.showBox{
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    border-radius: 4px;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+}
+.showBox div{
+    display: flex;
+    justify-content: space-between;
+}
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+::-webkit-scrollbar-track-piece  {
+    background-color: #C2D2E4;
+}
+::-webkit-scrollbar-thumb:vertical {
+    height: 30px;
+    background-color: #383535;
+}
