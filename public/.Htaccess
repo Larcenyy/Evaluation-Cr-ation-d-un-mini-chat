@@ -1,0 +1,3 @@
+RewriteEngine On # Activer le module Rewrite
+RewriteRule ^produits/?$ api.php [NC,L]
+RewriteRule ^[^/]+/(\d+)$ api.php?id=$1

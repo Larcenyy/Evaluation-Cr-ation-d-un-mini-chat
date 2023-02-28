@@ -1,6 +1,5 @@
 <?php
 
-
 class DbPDO
 {
     private static string $server = 'localhost';
@@ -33,7 +32,6 @@ class DbPDO
 
         $pass_form = strip_tags($pass_form); // Supprime les balises HTML et PHP
         password_hash($pass_form, PASSWORD_BCRYPT); // Step 2 on le filtre
-        //echo $password;
 
         if ($username && $pass_form) { // Check si les champs on était trouvé
             if ($req->execute()) {
@@ -53,7 +51,7 @@ class DbPDO
                         $request->bindParam(':id', $id);
                         $request->execute();
 
-                        header('Location: ./index.php');
+                        header('Location: ../public/index.php');
                     } else {
                         echo("<div class='warning'> Mot de passe incorrect.. </div>");
                         echo "<script>setTimeout(function(){ document.querySelector('.warning').style.display = 'none'; }, 3000);</script>";
@@ -185,4 +183,52 @@ class DbPDO
             echo "Vous n'êtes pas connecté à une session";
         }
     }
+
+    public static function apiTest(): void
+    {
+        $request_method = $_SERVER["REQUEST_METHOD"];
+        switch($request_method)
+        {
+            case 'GET':
+                if(!empty($_GET["id"]))
+                {
+                    // Récupérer un seul produit
+                    $id = intval($_GET["id"]);
+                    DbPDO::getProducts($id);
+                }
+                else
+                {
+                    // Récupérer tous les produits
+                    DbPDO::getProducts();
+                }
+                break;
+            default:
+                // Requête invalide
+                header("HTTP/1.0 405 Method Not Allowed");
+                break;
+        }
+    }
+
+
+
+    /* Fonction qui permet de récupèrer les message qui le met en tableau associatif
+       Ensuite ce tableau est converti pour JSON
+       Et ensuite devient un objet JSON
+    */
+
+    public static function getProducts(): void
+    {
+        $stmt = self::$db->prepare('SELECT * FROM message WHERE DATE >= :date');
+
+        $date = date("Y-m-d H:i:s", time() - 3);
+
+
+        $stmt->bindParam(":date", $date);
+        $stmt->execute();
+
+        $response = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        header('Content-Type: application/json');
+        echo json_encode($response, JSON_PRETTY_PRINT);
+    }
+
 }

@@ -1,4 +1,5 @@
 <?php
 
 require "../Classe/DbPDO.php";
-DbPDO::logoutUser();
+DbPDO::connect();
+DbPDO::apiTest();

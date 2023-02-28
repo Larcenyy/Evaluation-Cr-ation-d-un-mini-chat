@@ -1,5 +1,5 @@
 <?php
-    require 'Classe/DbPDO.php';
+    require '../Classe/DbPDO.php';
     DbPDO::connect();
 
     if (isset($_POST['connect'])){

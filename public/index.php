@@ -1,7 +1,8 @@
 <?php
     session_start();
+
     if (isset($_SESSION["authenticated"]) && $_SESSION["authenticated"]) {
-        require "./Classe/DbPDO.php";
+        require "../Classe/DbPDO.php";
         DbPDO::connect();
     }
     else{
@@ -51,5 +52,6 @@
         </section>
     </main>
     <script src="../libs/app.js"></script>
+    <script src="../libs/chatlog.js"></script>
 </body>
 </html>
